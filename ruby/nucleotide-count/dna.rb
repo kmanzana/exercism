@@ -5,7 +5,7 @@ class DNA
   attr_reader :dna_sequence
 
   def initialize(dna_sequence)
-    @dna_sequence = dna_sequence.split('')
+    @dna_sequence = dna_sequence
   end
 
   def count(nucleotide)
@@ -20,8 +20,14 @@ class DNA
   private
 
   def find_nucleotide_counts
-    dna_sequence.each_with_object(empty_nucleotide_counts) do |nucleotide, counts|
+    each_nucleotide_with_counts(empty_nucleotide_counts) do |nucleotide, counts|
       counts[nucleotide] += 1
+    end
+  end
+
+  def each_nucleotide_with_counts(counts)
+    dna_sequence.split('').each_with_object(counts) do |nucleotide, counts|
+      yield nucleotide, counts
     end
   end
 
