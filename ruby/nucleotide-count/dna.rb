@@ -26,7 +26,7 @@ class DNA
   end
 
   def each_nucleotide_with_counts(counts)
-    dna_sequence.split('').each_with_object(counts) do |nucleotide, counts|
+    dna_sequence.chars.each_with_object(counts) do |nucleotide, counts|
       yield nucleotide, counts
     end
   end
