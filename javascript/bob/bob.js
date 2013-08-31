@@ -1,30 +1,27 @@
-Bob = function() {
-  this.hey = function(statement) {
-    this.statement = statement;
-
-    if (this.nothing()) {
+function Bob() {
+  this.hey = function hey(statement) {
+    if (nothing(statement)) {
       return 'Fine. Be that way!';
-    } else if (this.yelling()) {
+    } else if (yelling(statement)) {
       return 'Woah, chill out!';
-    } else if (this.question()) {
+    } else if (question(statement)) {
       return 'Sure.';
     } else {
       return 'Whatever.';
     }
   };
 
-  this.nothing = function() {
-    return !this.statement.replace(/\s/g, "");
+  function nothing(statement) {
+    return !statement.trim();
   };
 
-  this.yelling = function() {
-    return this.statement.toUpperCase() == this.statement;
+  function yelling(statement) {
+    return statement.toUpperCase() == statement;
   };
 
-  this.question = function() {
-    return this.statement.slice(-1) == '?';
+  function question(statement) {
+    return statement.slice(-1) == '?';
   };
-
 };
 
 module.exports = Bob;

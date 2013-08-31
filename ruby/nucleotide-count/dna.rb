@@ -2,15 +2,15 @@ class DNA
   DNA_NUCLEOTIDES = ['A', 'T', 'C', 'G']
   RNA_NUCLEOTIDES = ['A', 'T', 'C', 'U']
 
-  attr_reader :dna_sequence
+  attr_reader :dna_string
 
-  def initialize(dna_sequence)
-    @dna_sequence = dna_sequence
+  def initialize(dna_string)
+    @dna_string = dna_string
   end
 
   def count(nucleotide)
     raise ArgumentError unless valid_nucleotides.include?(nucleotide)
-    nucleotide_counts[nucleotide]
+    dna_string.count(nucleotide)
   end
 
   def nucleotide_counts
@@ -20,21 +20,8 @@ class DNA
   private
 
   def find_nucleotide_counts
-    each_nucleotide_with_counts(empty_nucleotide_counts) do |nucleotide, counts|
-      counts[nucleotide] += 1
-    end
-  end
-
-  def each_nucleotide_with_counts(counts)
-    dna_sequence.chars.each_with_object(counts) do |nucleotide, counts|
-      yield nucleotide, counts
-    end
-  end
-
-  def empty_nucleotide_counts
-    @empty_nucleotide_counts ||= 
-    DNA_NUCLEOTIDES.each_with_object(Hash.new(0)) do |nucleotide, empty_hash|
-      empty_hash[nucleotide] = 0
+    DNA_NUCLEOTIDES.each_with_object({}) do |nucleotide, counts|
+      counts[nucleotide] ||= count(nucleotide)
     end
   end
 
