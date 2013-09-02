@@ -13,15 +13,16 @@ function Bob() {
 
   function nothing(statement) {
     return !statement.trim();
-  };
+  }
+
 
   function yelling(statement) {
-    return statement.toUpperCase() == statement;
-  };
+    return statement.toUpperCase() === statement;
+  }
 
   function question(statement) {
-    return statement.slice(-1) == '?';
-  };
-};
+    return statement.slice(-1) === '?';
+  }
+}
 
 module.exports = Bob;
