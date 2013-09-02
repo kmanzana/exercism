@@ -18,3 +18,8 @@ _yardoc
 doc/
 
 npm-debug.log
+
+clojure/
+elixir/
+haskell/
+python/
