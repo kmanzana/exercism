@@ -2,9 +2,10 @@ function Words(unparsedString) {
   this.count = getCount(getWords());
 
   function getCount(words) {
-    words.unshift({});
-
     return words.reduce(function(count, word, index) {
+      if (index === 1) {
+        count = increment({}, count.toLowerCase());
+      }
       return increment(count, word.toLowerCase());
     });
   }
