@@ -2,21 +2,17 @@ function Words(unparsedString) {
   this.count = getCount(getWords());
 
   function getCount(words) {
-    words.unshift({});
-
-    return words.reduce(function(count, word, index) {
+    return words.reduce(function(count, word) {
       return increment(count, word.toLowerCase());
-    });
+    }, {});
   }
 
   function getWords() {
-    return unparsedString.match(/[a-z\d]*/gi);
+    return unparsedString.match(/\w+/g);
   }
 
   function increment(count, word) {
-    if(word) {
-      count[word] = (count[word] || 0) + 1;
-    }
+    count[word] = count[word] + 1 || 1;
 
     return count;
   }
