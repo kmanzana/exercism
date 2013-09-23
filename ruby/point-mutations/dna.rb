@@ -6,14 +6,13 @@ class DNA
   end
 
   def hamming_distance(other_strand)
-    range_to_compare(other_strand).inject(0) do |distance, i|
-      distance + (strand[i] != other_strand[i] ? 1 : 0)
+    range_to_compare(other_strand).count do |i|
+      strand[i] != other_strand[i]
     end
   end
 
   def range_to_compare(other_strand)
-    smaller_length = [other_strand.length, strand.length].min
-
-    (0...smaller_length)
+    smaller_size = [other_strand.size, strand.size].min
+    0...smaller_size
   end
 end
