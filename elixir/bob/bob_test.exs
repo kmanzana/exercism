@@ -42,6 +42,6 @@ defmodule TeenagerTest do
   end
 
   test "prolonged silence" do
-    # assert Teenager.hey("  ") == "Fine. Be that way!"
+    assert Teenager.hey("  ") == "Fine. Be that way!"
   end
 end
