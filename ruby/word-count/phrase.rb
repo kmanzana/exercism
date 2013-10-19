@@ -12,6 +12,7 @@ class Phrase
   end
 
   private
+
   def find_words(input)
     input.scan(WORD_CHARACTERS)
   end

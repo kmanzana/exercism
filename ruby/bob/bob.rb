@@ -1,21 +1,21 @@
 class Bob
-  def hey what_someone_said
-    phrase_to_respond_to = Phrase.new what_someone_said
+  def hey(what_someone_said)
+    phrase = Phrase.new(what_someone_said)
+    respond_to phrase
+  end
 
-    if phrase_to_respond_to.nothing?
-      'Fine. Be that way!'
-    elsif phrase_to_respond_to.yelling? 
-      'Woah, chill out!'
-    elsif phrase_to_respond_to.asking? 
-      'Sure.'
-    else 
-      'Whatever.'
-    end
+  private
+
+  def respond_to(phrase)
+    return 'Fine. Be that way!' if phrase.nothing?
+    return 'Woah, chill out!'   if phrase.yelling?
+    return 'Sure.'              if phrase.asking?
+    'Whatever.'
   end
 end
 
 class Phrase
-  def initialize phrase_to_analyze
+  def initialize(phrase_to_analyze)
     @phrase_to_analyze = phrase_to_analyze
   end
 
@@ -32,7 +32,6 @@ class Phrase
   end
 
   private
-  def phrase_to_analyze
-    @phrase_to_analyze
-  end
+
+  attr_reader :phrase_to_analyze
 end

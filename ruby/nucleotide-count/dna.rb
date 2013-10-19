@@ -1,6 +1,6 @@
 class DNA
-  DNA_NUCLEOTIDES = ['A', 'T', 'C', 'G']
-  RNA_NUCLEOTIDES = ['A', 'T', 'C', 'U']
+  DNA_NUCLEOTIDES = %w(A T C G)
+  RNA_NUCLEOTIDES = %w(A T C U)
 
   attr_reader :dna_string
 
@@ -9,7 +9,7 @@ class DNA
   end
 
   def count(nucleotide)
-    raise ArgumentError unless valid_nucleotides.include?(nucleotide)
+    fail ArgumentError unless valid_nucleotides.include?(nucleotide)
     dna_string.count(nucleotide)
   end
 
